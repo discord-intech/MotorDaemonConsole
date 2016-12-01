@@ -53,6 +53,12 @@ int main()
         }
 
         write(sock, string, sizeof(string));
+
+        if (strstr(string, "exit") != NULL)
+        {
+            signalHandler(SIGINT);
+            exit(0);
+        }
     }
 
 }
