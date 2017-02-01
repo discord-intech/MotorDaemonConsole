@@ -52,6 +52,11 @@ int main()
             string[strlen(string)-1] = '\0';
         }
 
+        if(string[strlen(string)-1] != '\r')
+        {
+            string[strlen(string)-1] = '\r';
+        }
+
         write(sock, string, sizeof(string));
 
         if (strstr(string, "exit") != NULL)
