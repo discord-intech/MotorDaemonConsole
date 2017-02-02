@@ -9,7 +9,7 @@
 #include <zconf.h>
 
 #define SOCKET_PORT 56987
-#define BUFFER_MAX_SIZE 2048
+#define BUFFER_MAX_SIZE 1024
 
 void connecting ( in_port_t port, const char * hostname );
 void* readerWorker(void*);
@@ -50,11 +50,6 @@ int main()
         if(string[strlen(string)-1] == '\n') //Remove the newline (MotorDeamon's reading it like an idiot)
         {
             string[strlen(string)-1] = '\0';
-        }
-
-        if(string[strlen(string)-1] != '\r')
-        {
-            string[strlen(string)-1] = '\r';
         }
 
         write(sock, string, sizeof(string));
