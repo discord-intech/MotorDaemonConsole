@@ -38,6 +38,10 @@ int main()
 
     connecting (htons(SOCKET_PORT), "localhost") ;
 
+    ssize_t rbytes;
+
+    rbytes = write(sock, "motordaemon", 11);
+
     pthread_create(&t, NULL, readerWorker, NULL);
 
     printf("MotorDaemon detected on localhost:%d\nMotorDaemonConsole is ready\n", SOCKET_PORT);
@@ -46,6 +50,8 @@ int main()
     {
         char string[BUFFER_MAX_SIZE];
         fgets (string, BUFFER_MAX_SIZE, stdin);
+
+        memset(string+strlen(string)*sizeof(char), 0, BUFFER_MAX_SIZE-strlen(string)*sizeof(char));
 
         if(string[strlen(string)-1] == '\n') //Remove the newline (MotorDeamon's reading it like an idiot)
         {
