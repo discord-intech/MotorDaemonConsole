@@ -9,7 +9,7 @@
 #include <zconf.h>
 
 #define SOCKET_PORT 56987
-#define BUFFER_MAX_SIZE 1024
+#define BUFFER_MAX_SIZE 65536
 
 void connecting ( in_port_t port, const char * hostname );
 void* readerWorker(void*);
