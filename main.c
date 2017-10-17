@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <signal.h>
-#include <zconf.h>
 
 #define SOCKET_PORT 56987
 #define BUFFER_MAX_SIZE 65536
